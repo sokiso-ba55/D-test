@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}メンバー一覧{% endblock %}
+{% block content %}
+<h1>メンバー一覧</h1>
+<p>ログインユーザー: {{ session.username }}</p>
+<a href="{{ url_for('logout') }}"><button>ログアウト</button></a>
+<table border="1" cellpadding="8" style="margin-top:20px; width:100%;">
+    <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>部署名</th>
+    </tr>
+    {% for member in members %}
+    <tr>
+        <td>{{ member.id }}</td>
+        <td><a href="{{ url_for('member_detail', member_id=member.id) }}">{{ member.name }}</a></td>
+        <td>{{ member.department }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3" style="text-align:center;">メンバーがいません</td></tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('add_member') }}"><button style="margin-top:20px;">メンバー追加</button></a>
+{% endblock %} 

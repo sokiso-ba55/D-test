@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}メンバー編集{% endblock %}
+{% block content %}
+<h1>メンバー編集</h1>
+<form method="post">
+    <div>
+        <label for="name">名前</label><br>
+        <input type="text" id="name" name="name" value="{{ member.name }}" required>
+    </div>
+    <div style="margin-top:10px;">
+        <label for="department">部署名</label><br>
+        <input type="text" id="department" name="department" value="{{ member.department }}" required>
+    </div>
+    <div style="margin-top:20px;">
+        <button type="submit">保存</button>
+        <a href="{{ url_for('member_detail', member_id=member.id) }}"><button type="button">キャンセル</button></a>
+    </div>
+    {% if error %}
+    <div style="color:red; margin-top:10px;">{{ error }}</div>
+    {% endif %}
+</form>
+{% endblock %} 
