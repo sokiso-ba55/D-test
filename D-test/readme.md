@@ -1,4 +1,4 @@
-# Daihatsu AWS POC
+# AWS POC
 
 ## プロジェクト概要
 
